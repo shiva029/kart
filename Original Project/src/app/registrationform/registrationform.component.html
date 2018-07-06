@@ -1,0 +1,107 @@
+<div class="container-fluid">
+  
+      <div class="row">
+  
+          <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <legend>Registration Form</legend>
+          </div>
+  
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <br>
+              <br>
+  
+              <form #formRef='ngForm' (ngSubmit)='onSubmit(formRef.value)' method="POST"  role="form">
+                  <div class="form-group">
+                      <label for="fname">Enter the First Name:</label>
+                      <input type="text" class="form-control" name='fname' minlength='3' maxlength='12' #fname='ngModel' required="required" ngModel>
+                      <div *ngIf='fname.errors&&(fname.dirty||fname.touched||fname.valid)'>
+                          <div class='text-danger' [hidden]='!fname.errors.required'>Please Enter Your First Name</div>
+                          <div class='text-danger' [hidden]='!fname.errors.minlength'>Enter atleast 6 characters</div>
+                          <div class='text-danger' [hidden]='!fname.errors.maxlength'>Enter Maximum of 12 characters</div>
+                      </div>
+                  </div>
+  
+                  <div class="form-group">
+                      <label for="lname">Enter the Last Name:</label>
+                      <input type="text" class="form-control" name='lname' minlength='3' maxlength='12' #lname='ngModel' required='required' ngModel>
+                      <div *ngIf='lname.errors&&(lname.dirty||lname.touched||lname.valid)'>
+                          <div class='text-danger' [hidden]='!lname.errors.minlength'>Enter atleast 6 characters</div>
+                          <div class='text-danger' [hidden]='!lname.errors.maxlength'>Enter Maximum of 12 characters</div>
+                      </div>
+                  </div>
+  
+                  <div class="email">
+                      <label for="email">Enter Your Email Id:</label>
+                      <input type="email" class="form-control" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email='ngModel' required='required' ngModel>
+                      <div *ngIf='email.errors&&(email.dirty||email.touched||email.valid)'>
+                          <div class='text-danger' [hidden]='!email.errors.required'>Email is Required</div>
+                          <div class='text-danger' [hidden]='!email.errors.pattern'>Email format should be <b><small>joe@abc.com</small></b></div>
+                      </div>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                      <span><b>Gender:</b></span>
+                      <label class="radio-inline">
+                 <input type="radio" name="gender" id="male" value="male"> Male
+                  </label>
+                      <label class="radio-inline">
+                    <input type="radio" name="gender" id="female" value="female"> Female
+                  </label>
+                  </div>
+                  <div class="form-group">
+                      <label for="mobno">Enter Your Mobile Number:</label>
+                      <input type="tel" class="form-control" name='mobno' pattern="^[7-9]{1}[0-9]{9}$" maxlength='10' #mobno='ngModel' required='required' ngModel>
+                      <div *ngIf='mobno.errors&&(mobno.dirty||mobno.touched||mobno.valid)'>
+                          <div class='text-danger' [hidden]='!mobno.errors.required'>Should Not Be Empty</div>
+                          <div class='text-danger' [hidden]='!mobno.errors.maxlength'>Enter 10 Number Only</div>
+                          <div class='text-danger' [hidden]='!mobno.errors.pattern'>Starting should be 7 or 8 or 9</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="uname">Enter the User Name:</label>
+                      <input type="text" class="form-control" name='uname' minlength='6' maxlength='12' #Uname='ngModel' required='required' ngModel>
+                      <div *ngIf='Uname.errors&&(Uname.dirty||Uname.touched||Uname.valid)'>
+                          <div class='text-danger' [hidden]='!Uname.errors.required'>Should Not Be Empty</div>
+                          <div class='text-danger' [hidden]='!Uname.errors.minlength'>Enter atleast 6 characters</div>
+                          <div class='text-danger' [hidden]='!Uname.errors.maxlength'>Enter Maximum of 12 characters</div>
+                      </div>
+                  </div>
+  
+                  <div class="form-group">
+                      <label for="password">Password:</label>
+                      <input type="password" class="form-control" #passRef="ngModel"  id="password"  pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})" name="password" required="required" minlength="8" maxlength="20"
+                          ngModel [(ngModel)]="password">
+                      <div *ngIf='passRef.errors&&(passRef.dirty||passRef.touched||passRef.valid)'>
+                          <div class='text-danger' [hidden]='!passRef.errors.required'>Should Not Be Empty</div>
+                          <div class='text-danger' [hidden]='!passRef.errors.minlength'>Enter atleast 6 characters</div>
+                          <div class='text-danger' [hidden]='!passRef.errors.maxlength'>Enter Maximum of 12 characters</div>
+                          <div class='text-danger' [hidden]='!passRef.errors.pattern'><b><small>Must contain atleast 1 symbol,lowercase,uppercase,digit</small></b></div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="cpwd">Confirm Password:</label>
+                      <input type="password" class="form-control"  #cpassRef="ngModel" name="cpassword" ngModel [(ngModel)]="cpassword" (input)="checkPassword()">
+                    <div *ngIf="pwdmatch" class="alert alert-success">Password Matched</div> 
+                    <div *ngIf="pwdnotmatch" class="alert alert-danger">Password not Matched</div>
+        
+                    </div>
+                      <div class="form-group">
+                          <label for="paddress">Enter Your Temporary Address:</label>
+                          <textarea type="text" class="form-control" cols="25" rows="5" name='paddress' #taddress='ngModel' required='required' ngModel></textarea>
+                          <div *ngIf='taddress.errors&&(taddress.dirty||taddress.touched||taddress.valid)'>
+                              <div class='text-danger' [hidden]='!taddress.errors.required'>Address is Required</div>
+                          </div>
+                      </div>
+                  
+  
+                  <div class="checkbox">
+                      <label><input type="checkbox">I  Agree to the terms and conditions</label>
+                  </div>
+                  <button [disabled]='formRef.invalid' type="submit" class="btn btn-success">Submit</button>
+              </form>
+          </div>
+  
+      </div>
+  
+  
+  </div>

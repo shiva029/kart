@@ -1,0 +1,80 @@
+<div class="container">
+  
+  <div class="row">
+    
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <h2>Address to dispatch</h2>
+      <p>Please fill the fields</p>
+      <form #formRef='ngForm'(ngSubmit)='onSubmit(formRef.value)'></form>
+      
+      <div class="form-group">
+      <label>Door no: </label>
+      <input type="text" class="form-control" #doorRef='ngModel' required  name="doorno" ngModel/>
+      
+    </div>
+
+      <div class="form-group">
+      <label>Village/Street: </label>
+      <input type="text" class="form-control" #villageRef='ngModel' required  name="village" ngModel/>
+      
+    </div>
+     
+    <div class="form-group">
+      <label>Landmark: </label>
+      <input type="text" class="form-control" #landRef='ngModel' required  name="landmark" ngModel/>
+      
+    </div>
+
+    <div class="form-group">
+      <label>Town/City: </label>
+      <input type="text" class="form-control" #townRef='ngModel' required  name="town" ngModel/>
+      
+    </div>
+
+    <div class="form-group">
+      <label>District: </label>
+      <input type="text" class="form-control" #districtRef='ngModel' required  name="district" ngModel/>
+      
+    </div>
+
+    <div class="form-group">
+      <label>State: </label>
+      <input type="text" class="form-control" #stateRef='ngModel' required  name="state" ngModel/>
+      
+    </div>
+
+    <div class="form-group">
+      <label>PinCode: </label>
+      <input type="text" class="form-control" #pinRef='ngModel' required pattern="^[0-9]{6}"  name="Pincode" ngModel/>
+      <div *ngIf='pinRef.errors&&(pinRef.dirty||pinRef.touched||pinRef.valid)'>
+      <div [hidden]='pinRef.errors.required'>plese enter your pincode</div>
+      <div [hidden]='pinRef.errors.pattern'>enter only numbers</div>
+    </div>
+    </div>
+
+    <div class="form-group">
+      <label>Phone No:</label>
+      <input type="phone" class="form-control" #phoneRef='ngModel' required
+      pattern="[7-9]{1}[0-9]{9}" minlength="10" maxlength="10" name= "phone"  ngModel/>
+      <div *ngIf='phoneRef.errors&&(phoneRef.dirty||phoneRef.touched||phoneRef.valid)'>
+       <div [hidden]='phoneRef.errors.required'>enter your valid phone number</div>
+       <div [hidden]='phoneRef.errors.minlength'></div>
+       <div [hidden]='phoneRef.errors.maxlength'></div>
+       <div [hidden]='phoneRef.errors.pattern'></div>
+       
+    </div>
+  </div>
+  
+  
+  <button type="button" class="btn btn-default">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
+  <button type="button" class="btn btn-default">AddNewAddress</button>
+  
+  
+  
+      
+    </div>
+    
+  </div>
+  
+</div>

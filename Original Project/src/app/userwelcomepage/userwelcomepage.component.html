@@ -1,0 +1,33 @@
+<div id="displaynone">
+    <div class="list-group list-group-horizontal" *ngFor="let i of mobdata">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <a class="list-group-item " data-toggle="modal" data-target="#myModals8">
+                <div class="panel panel-default" (click)="modalclick(i.mid)">
+                    <div class="panel-heading">{{i.mname}}</div>
+                    <div class="panel-body"><img src="{{i.mimage}}" alt="GalaxyS8" class="img-thumbnail" width="304" height="236"></div>
+                    <div class="panel-footer"> &#8377;{{i.mprice}}</div>
+                </div>
+            </a>
+            <div class="modal fade" id="myModals8" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"><b>Specifications</b></h4>
+                        </div>
+                        <div class="modal-body">
+                            <ul *ngFor="let specification of modalspecifications">
+                                <li>{{specification}}</li>
+                            </ul>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" (click)="increment()" data-dismiss="modal">Add tO cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
